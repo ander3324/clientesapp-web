@@ -7,5 +7,25 @@
 <body>
 
 	<h2 th:text="${titulo}"></h2>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Apellido</th>
+				<th>Nombre</th>
+				<th>Fecha de Nacimiento</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="c : ${clientes}">
+				<td th:text="${c.numero}"></td>
+				<td th:text="${c.apellido}"></td>
+				<td th:text="${c.nombre}"></td>
+				<td th:text="${c.fechaNacimiento}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
 </body>
 </html>

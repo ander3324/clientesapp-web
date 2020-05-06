@@ -2,9 +2,12 @@ package com.analistas.clientesapp.model.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.analistas.clientesapp.model.entities.Cliente;
 import com.analistas.clientesapp.model.repository.ClienteRepository;
 
+@Service
 public class ClienteServiceImpl implements IClienteService {
 	
 	ClienteRepository repo = new ClienteRepository();
