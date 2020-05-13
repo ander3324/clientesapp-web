@@ -18,7 +18,7 @@ public class ClienteController {
 	//En Spring teniamos IoC, acá no.
 	//ClienteServiceImpl clienteService = new ClienteServiceImpl();
 	
-	//IoC implemetado con sPRING
+	//IoC implemetado con sPRING (Dependence Injection)
 	@Autowired
 	IClienteService clienteService;
 	
