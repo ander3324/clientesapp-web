@@ -34,4 +34,12 @@ public class ClienteController {
 		
 		return "clientes/list";
 	}
+	
+	@GetMapping({"/form"})
+	public String form(Model m) {
+		
+		m.addAttribute("mensaje", "Segunda página");
+		
+		return "clientes/form";
+	}
 }
