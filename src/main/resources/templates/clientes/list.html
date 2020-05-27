@@ -8,7 +8,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title th:text="#{app.title}">Tables - SB Admin</title>
-<link href="css/styles.css" rel="stylesheet" />
+<link th:href="@{/css/styles.css}" rel="stylesheet" />
 <link
 	href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
 	rel="stylesheet" crossorigin="anonymous" />
@@ -57,6 +57,7 @@
 			</li>
 		</ul>
 	</nav>
+
 	<div id="layoutSidenav">
 		<div id="layoutSidenav_nav">
 			<nav class="sb-sidenav accordion sb-sidenav-dark"
@@ -142,6 +143,7 @@
 								</div>
 							</nav>
 						</div>
+
 						<div class="sb-sidenav-menu-heading">Addons</div>
 						<a class="nav-link" href="charts.html">
 							<div class="sb-nav-link-icon">
@@ -166,6 +168,11 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid">
+					<div id="success"  th:classappend="${success} != null ? 'alert alert-success' : ''">
+						<strong>
+							<span th:text="${success}"></span>
+						</strong>
+					</div>
 					<h1 class="mt-4" th:text="#{clientes.list.title}">Tables</h1>
 					<ol class="breadcrumb mb-4">
 						<li class="breadcrumb-item">
@@ -182,10 +189,16 @@
 							<i class="fas fa-user-tie"></i>
 							<span th:text="#{clientes.card.title}"></span>
 							<span class="float-right">
+								<a th:href="@{/clientes/form}" class="btn btn-light btn-sm">
+									<span th:text="#{clientes.btn.new}"></span>
+								</a>
+
+								<!-- Para usar después...
 								<a th:href="@{/clientes/form}" class="btn btn-light btn-sm"
 									data-toggle="modal" data-target="#myModal">
 									<span th:text="#{clientes.btn.new}"></span>
 								</a>
+								 -->
 							</span>
 						</div>
 						<div class="card-body">
@@ -249,42 +262,20 @@
 		</div>
 	</div>
 
-	<!-- The Modal -->
-	<div class="modal" id="myModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">Modal Heading</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body">Modal body..</div>
-
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-				</div>
-
-			</div>
-		</div>
-	</div>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 		crossorigin="anonymous"></script>
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
-	<script src="js/scripts.js"></script>
+	<script th:src="@{/js/scripts.js}"></script>
 	<script
 		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
 		crossorigin="anonymous"></script>
-	<script src="assets/demo/datatables-demo.js"></script>
+
 	<script th:src="@{/js/clientes.js}"></script>
 
 </body>

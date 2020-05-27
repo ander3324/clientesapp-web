@@ -2,19 +2,21 @@ package com.analistas.clientesapp.model.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.analistas.clientesapp.model.entities.Cliente;
-import com.analistas.clientesapp.model.repository.ClienteRepository;
+import com.analistas.clientesapp.model.repository.IClienteRepository;
 
 @Service
 public class ClienteServiceImpl implements IClienteService {
 	
-	ClienteRepository repo = new ClienteRepository();
+	@Autowired
+	IClienteRepository repo;
 
 	@Override
 	public List<Cliente> buscarTodo() {
-		return repo.getClientes();
+		return repo.findAll();
 	}
 
 	@Override
@@ -25,7 +27,7 @@ public class ClienteServiceImpl implements IClienteService {
 
 	@Override
 	public void guardar(Cliente cliente) {
-		repo.addCliente(cliente);
+		repo.save(cliente);
 	}
 
 	@Override
