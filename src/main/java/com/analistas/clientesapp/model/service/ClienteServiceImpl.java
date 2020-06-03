@@ -21,8 +21,8 @@ public class ClienteServiceImpl implements IClienteService {
 
 	@Override
 	public Cliente buscarPorId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return repo.findById(id).orElse(null);
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.analistas.clientesapp.model.entities.Cliente;
@@ -18,6 +19,7 @@ import com.analistas.clientesapp.model.service.IClienteService;
 
 @Controller
 @RequestMapping({"", "/clientes"})
+@SessionAttributes({"cliente"})
 public class ClienteController {
 	
 	//En Spring teniamos IoC, acá no.
@@ -62,8 +64,15 @@ public class ClienteController {
 	
 	@PostMapping("/form")
 	public String guardar(@Valid Cliente cliente, Model m, RedirectAttributes flash) {
+		
+		if(cliente.getNumero() == 0) {
+			flash.addFlashAttribute("success", "Cliente '" + cliente + "' creado.");
+		} else
+		{
+			flash.addFlashAttribute("warning", "Cliente '" + cliente + "' modificado.");
+		}
 		clienteService.guardar(cliente);
-		flash.addFlashAttribute("success", "Cliente guardado correctamente.");
+		
 		
 		return "redirect:list";
 	}
