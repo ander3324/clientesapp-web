@@ -1,12 +1,15 @@
 package com.analistas.clientesapp.controller;
 
 import java.util.List;
+import java.util.Locale;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +31,7 @@ public class ClienteController {
 	//IoC implemetado con sPRING (Dependence Injection)
 	@Autowired
 	IClienteService clienteService;
-	
+
 	List<Cliente> clientes;
 
 	@GetMapping({"", "/list"})
@@ -63,7 +66,11 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/form")
-	public String guardar(@Valid Cliente cliente, Model m, RedirectAttributes flash) {
+	public String guardar(@Valid Cliente cliente, BindingResult r, Model m, RedirectAttributes flash) {
+		
+		if(r.hasErrors()) {
+			return "clientes/form";
+		}
 		
 		if(cliente.getNumero() == 0) {
 			flash.addFlashAttribute("success", "Cliente '" + cliente + "' creado.");

@@ -13,7 +13,10 @@
 				<div class="form-group">
 					<label for="apellido" th:text="#{clientes.form.lastname}"></label>
 					<input type="text" class="form-control" id="apellido"
-						th:field="*{apellido}" />
+						th:field="*{apellido}" th:errorclass="'form-control alert-danger'"/>
+						<small class="form-text text-danger" 
+							th:if="${#fields.hasErrors('apellido')}" 
+							th:errors="*{apellido}"></small>
 				</div>
 				<div class="form-group">
 					<label for="nombre" th:text="#{clientes.form.firstname}"></label>

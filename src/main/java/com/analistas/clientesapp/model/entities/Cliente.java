@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -20,6 +22,8 @@ public class Cliente {
 	@Column(name="id")
 	private int numero;
 	
+	@NotEmpty
+	@Size(min = 3)
 	@Column(name="ape", nullable = false, length = 35)
 	private String apellido;
 	
