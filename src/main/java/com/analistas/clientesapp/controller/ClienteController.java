@@ -21,7 +21,7 @@ import com.analistas.clientesapp.model.entities.Cliente;
 import com.analistas.clientesapp.model.service.IClienteService;
 
 @Controller
-@RequestMapping({"", "/clientes"})
+@RequestMapping({"/clientes"})
 @SessionAttributes({"cliente"})
 public class ClienteController {
 	
@@ -34,7 +34,7 @@ public class ClienteController {
 
 	List<Cliente> clientes;
 
-	@GetMapping({"", "/list"})
+	@GetMapping({"/list"})
 	public String listar(Model m) {
 
 		clientes = clienteService.buscarTodo();
